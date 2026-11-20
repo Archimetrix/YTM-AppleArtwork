@@ -12,10 +12,10 @@ player, as a separate [Morphe](https://github.com/MorpheApp) patch bundle.
 ## Install
 
 1. Morphe Manager -> **Sources** -> add this link (or paste the repo URL):
-   `https://morphe.software/add-source?github=Archimetrix/YTM-AppleArtwork`
-   (raw endpoint: `https://raw.githubusercontent.com/Archimetrix/YTM-AppleArtwork/main/patches-bundle.json`)
-2. Patch YouTube Music with **Morphe Patches** and this bundle selected together.
-3. Updates show up in Manager like any other source.
+   `https://morphe.software/add-source?github=Archimetrix/YTM-AppleArtwork` or press the button .
+   [![Add to Morphe](https://img.shields.io/badge/Add%20to-Morphe-6c5ce7?style=for-the-badge&logo=android&logoColor=white)](https://morphe.software/add-source?github=Archimetrix/YTM-AppleArtwork)
+3. Patch YouTube Music with **Morphe Patches** and this bundle selected together.
+4. Updates show up in Manager like any other source.
 
 Supported YouTube Music versions follow Morphe's list (9.15.51 - 9.46.51; the newest ones are experimental).
 
