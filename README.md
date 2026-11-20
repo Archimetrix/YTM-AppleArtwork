@@ -36,10 +36,6 @@ See `scripts/build.sh` (needs JDK, kotlinc, dx, android.jar and the Morphe patch
 PATCHER_JAR=morphe-desktop-2.2.0-all.jar scripts/build.sh 1.2.1
 ```
 
-## Releasing an update
-
-See `RELEASING.md`.
-
 ## License
 
 AGPL-3.0-or-later. See `LICENSE` and `NOTICE`.
