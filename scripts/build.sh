@@ -7,6 +7,8 @@
 #   Kotlin: https://github.com/JetBrains/kotlin/releases  (kotlin-compiler-*.zip)
 #   Patcher: https://github.com/MorpheApp/morphe-desktop/releases (morphe-desktop-*-all.jar)
 #
+#   Also (for patches-list.json): libgoogle-gson-java (gson.jar)
+#
 # usage: PATCHER_JAR=/path/morphe-desktop-2.2.0-all.jar scripts/build.sh 1.2.1
 set -euo pipefail
 VERSION="${1:?usage: build.sh <version, e.g. 1.2.1>}"
@@ -14,6 +16,8 @@ PATCHER_JAR="${PATCHER_JAR:?set PATCHER_JAR to morphe-desktop-*-all.jar}"
 ANDROID_JAR="${ANDROID_JAR:-/usr/share/java/com.android.android-23.jar}"
 DX_JAR="${DX_JAR:-/usr/share/java/com.android.dx.jar}"
 KOTLINC="${KOTLINC:-kotlinc}"
+GSON_JAR="${GSON_JAR:-/usr/share/java/gson.jar}"
+KOTLIN_STDLIB="${KOTLIN_STDLIB:-$(dirname "$(readlink -f "$(command -v "$KOTLINC")")")/../lib/kotlin-stdlib.jar}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 W="$ROOT/build"; OUT="$ROOT/dist"
 rm -rf "$W"; mkdir -p "$W"/{ext_cls,patch_cls,ext_dex,patch_dex,stage/META-INF,stage/extensions} "$OUT"
@@ -62,4 +66,10 @@ public class Check { public static void main(String[] a) throws Exception {
 JV
 javac -cp "$PATCHER_JAR" -d "$W" "$W/Check.java"
 java -cp "$PATCHER_JAR:$W" Check "$MPP"
+
+echo "[6/6] patches-list.json (needed by the Morphe community patch index)"
+mkdir -p "$W/plg"
+"$KOTLINC" -jvm-target 11 -no-reflect -cp "$PATCHER_JAR:$GSON_JAR" "$ROOT/scripts/PatchListGenerator.kt" -d "$W/plg"
+java -cp "$PATCHER_JAR:$W/plg:$GSON_JAR:$KOTLIN_STDLIB" dev.archimetrix.tools.PatchListGeneratorKt "$MPP" "$OUT/patches-list.json"
 echo "OK -> $MPP"
+echo "OK -> $OUT/patches-list.json  (commit this file to the repo root with every release)"
