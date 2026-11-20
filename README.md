@@ -1,0 +1,47 @@
+# YTM-AppleArtwork
+
+Apple Music **animated artwork** (motion covers) on top of the thumbnail in the YouTube Music
+player, as a separate [Morphe](https://github.com/MorpheApp) patch bundle.
+
+- Fetches artwork **directly from Apple** (no third-party server).
+- Handles Apple's HLS (`.m3u8`) by assembling the clip into a local file and looping it.
+- Settings entry in YouTube Music: **on/off**, a **persistent log** (copy / share / clear) and a cache cleaner.
+- Works with root and non-root installs.
+- Songs without motion artwork are left untouched.
+
+## Install
+
+1. Morphe Manager -> **Sources** -> add this link (or paste the repo URL):
+   `https://morphe.software/add-source?github=Archimetrix/YTM-AppleArtwork`
+   (raw endpoint: `https://raw.githubusercontent.com/Archimetrix/YTM-AppleArtwork/main/patches-bundle.json`)
+2. Patch YouTube Music with **Morphe Patches** and this bundle selected together.
+3. Updates show up in Manager like any other source.
+
+Supported YouTube Music versions follow Morphe's list (9.15.51 - 9.46.51; the newest ones are experimental).
+
+## Settings
+
+YouTube Music -> Settings -> **Apple Music artwork**.
+
+## Troubleshooting
+
+Open the settings entry and press **Copy** on the log, then open an issue with it.
+If YouTube Music crashes, a "crashed last time" popup with the stack trace appears on the next launch.
+
+## Build
+
+See `scripts/build.sh` (needs JDK, kotlinc, dx, android.jar and the Morphe patcher jar):
+
+```
+PATCHER_JAR=morphe-desktop-2.2.0-all.jar scripts/build.sh 1.2.1
+```
+
+## Releasing an update
+
+See `RELEASING.md`.
+
+## License
+
+AGPL-3.0-or-later. See `LICENSE` and `NOTICE`.
+
+Built with love by [Archimetrix](https://github.com/Archimetrix).
