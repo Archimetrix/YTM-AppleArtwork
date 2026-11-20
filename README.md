@@ -11,8 +11,8 @@ player, as a separate [Morphe](https://github.com/MorpheApp) patch bundle.
 
 ## Install
 
-1. Morphe Manager -> **Sources** -> add this link (or paste the repo URL):
-   `https://morphe.software/add-source?github=Archimetrix/YTM-AppleArtwork` or press the button .
+1. Morphe Manager -> **Sources** -> add this repo link :
+   `https://morphe.software/add-source?github=Archimetrix/YTM-AppleArtwork` or press this morphe button .
    [![Add to Morphe](https://img.shields.io/badge/Add%20to-Morphe-6c5ce7?style=for-the-badge&logo=android&logoColor=white)](https://morphe.software/add-source?github=Archimetrix/YTM-AppleArtwork)
 3. Patch YouTube Music with **Morphe Patches** and this bundle selected together.
 4. Updates show up in Manager like any other source.
