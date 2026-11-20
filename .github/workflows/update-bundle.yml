@@ -1,0 +1,34 @@
+name: Update patches-bundle.json
+on:
+  release:
+    types: [published]
+permissions:
+  contents: write
+jobs:
+  bundle:
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Write patches-bundle.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+          BODY: ${{ github.event.release.body }}
+          PUBLISHED: ${{ github.event.release.published_at }}
+        run: |
+          URL=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets \
+                -q '[.assets[] | select(.name | endswith(".mpp"))][0].url')
+          if [ -z "$URL" ] || [ "$URL" = "null" ]; then echo "No .mpp attached to the release"; exit 1; fi
+          jq -n --arg v "${TAG#v}" --arg c "${PUBLISHED%Z}" --arg d "$BODY" --arg u "$URL" \
+            '{created_at:$c, description:$d, download_url:$u, version:$v}' > patches-bundle.json
+          cat patches-bundle.json
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add patches-bundle.json
+          git commit -m "chore: bundle ${{ github.event.release.tag_name }} [skip ci]" || exit 0
+          git push
