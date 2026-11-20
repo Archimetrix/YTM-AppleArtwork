@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-11-19T19:38:52",
-  "description": "- First public release\n- Apple Music animated artwork over the YouTube Music player thumbnail\n- Settings entry with on/off switch and persistent log",
+  "created_at": "2026-11-20T05:14:46",
+  "description": "First release of morphe patch for ytmusic that will provide Applemusic Artwork support inside ytmusic . ",
   "download_url": "https://github.com/Archimetrix/YTM-AppleArtwork/releases/download/v1.2.1/apple-music-artwork-1.2.1.mpp",
   "version": "1.2.1"
 }
