@@ -3,7 +3,7 @@
 Apple Music **animated artwork** (motion covers) on top of the thumbnail in the YouTube Music
 player, as a separate [Morphe](https://github.com/MorpheApp) patch bundle.
 
-**🌫️This patch is now included in the morphe official patch no need to install this patch seperately now just normally patch with morphe patches and you will get the feature**
+🌫️**This patch is now included in the morphe official patch no need to install this patch seperately now just normally patch with morphe patches and you will get the feature**
 
 - Fetches artwork **directly from Apple** (no third-party server).
 - Handles Apple's HLS (`.m3u8`) by assembling the clip into a local file and looping it.
